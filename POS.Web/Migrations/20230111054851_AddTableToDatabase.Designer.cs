@@ -12,7 +12,7 @@ using POS.Web.DataContext;
 namespace POS.Web.Migrations
 {
     [DbContext(typeof(PosDbContext))]
-    [Migration("20230111052933_AddTableToDatabase")]
+    [Migration("20230111054851_AddTableToDatabase")]
     partial class AddTableToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -214,16 +214,11 @@ namespace POS.Web.Migrations
                         .HasColumnType("float")
                         .HasColumnName("discount");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int")
-                        .HasColumnName("order_id");
-
                     b.Property<int>("OrdersId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
-                        .HasColumnType("int")
-                        .HasColumnName("product_id");
+                        .HasColumnType("int");
 
                     b.Property<long>("Quantity")
                         .HasColumnType("bigint")
@@ -251,16 +246,8 @@ namespace POS.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int")
-                        .HasColumnName("customer_id");
-
                     b.Property<int>("CustomersId")
                         .HasColumnType("int");
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int")
-                        .HasColumnName("employee_id");
 
                     b.Property<int>("EmployeesId")
                         .HasColumnType("int");
@@ -334,8 +321,7 @@ namespace POS.Web.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CategoryId")
-                        .HasColumnType("int")
-                        .HasColumnName("category_id");
+                        .HasColumnType("int");
 
                     b.Property<bool>("Discontinued")
                         .HasColumnType("bit")
@@ -353,10 +339,6 @@ namespace POS.Web.Migrations
                     b.Property<long>("ReorderLevel")
                         .HasColumnType("bigint")
                         .HasColumnName("reorder_level");
-
-                    b.Property<int>("SuplierId")
-                        .HasColumnType("int")
-                        .HasColumnName("supplier_id");
 
                     b.Property<int>("SupplierId")
                         .HasColumnType("int");

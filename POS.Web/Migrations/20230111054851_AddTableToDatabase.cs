@@ -102,9 +102,7 @@ namespace POS.Web.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    customer_id = table.Column<int>(type: "int", nullable: false),
                     CustomersId = table.Column<int>(type: "int", nullable: false),
-                    employee_id = table.Column<int>(type: "int", nullable: false),
                     EmployeesId = table.Column<int>(type: "int", nullable: false),
                     order_date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     required_date = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -142,9 +140,8 @@ namespace POS.Web.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     product_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    supplier_id = table.Column<int>(type: "int", nullable: false),
                     SupplierId = table.Column<int>(type: "int", nullable: false),
-                    category_id = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
                     quantity_per_unit = table.Column<long>(type: "bigint", nullable: false),
                     unit_price = table.Column<double>(type: "float", nullable: false),
                     unit_in_stock = table.Column<long>(type: "bigint", nullable: false),
@@ -156,8 +153,8 @@ namespace POS.Web.Migrations
                 {
                     table.PrimaryKey("PK_tbl_product", x => x.id);
                     table.ForeignKey(
-                        name: "FK_tbl_product_tbl_category_category_id",
-                        column: x => x.category_id,
+                        name: "FK_tbl_product_tbl_category_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "tbl_category",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -175,9 +172,8 @@ namespace POS.Web.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    order_id = table.Column<int>(type: "int", nullable: false),
                     OrdersId = table.Column<int>(type: "int", nullable: false),
-                    product_id = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
                     unit_price = table.Column<int>(type: "int", nullable: false),
                     quantity = table.Column<long>(type: "bigint", nullable: false),
                     discount = table.Column<double>(type: "float", nullable: false)
@@ -192,8 +188,8 @@ namespace POS.Web.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_tbl_order_details_tbl_product_product_id",
-                        column: x => x.product_id,
+                        name: "FK_tbl_order_details_tbl_product_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "tbl_product",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -215,14 +211,14 @@ namespace POS.Web.Migrations
                 column: "OrdersId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_order_details_product_id",
+                name: "IX_tbl_order_details_ProductId",
                 table: "tbl_order_details",
-                column: "product_id");
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_product_category_id",
+                name: "IX_tbl_product_CategoryId",
                 table: "tbl_product",
-                column: "category_id");
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_product_SupplierId",

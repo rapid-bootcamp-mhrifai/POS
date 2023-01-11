@@ -18,13 +18,13 @@ namespace POS.Repository
         [Column("product_name")]
         public string ProductName { get; set; }
 
-        [Column("supplier_id")]
-        public int SuplierId { get; set; }
+/*        [Column("supplier_id")]
+        public int SuplierId { get; set; }*/
 
         public SupplierEntity Supplier { get; set; }
 
-        [Column("category_id")]
-        public int CategoryId { get; set; }
+        /*[Column("category_id")]
+        public int CategoryId { get; set; }*/
 
         public CategoryEntity Category { get; set; }
 
