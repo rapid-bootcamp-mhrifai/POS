@@ -1,11 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using POS.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace POS.Web.DataContext
+namespace POS.Repository
 {
-    public class PosDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public PosDbContext(DbContextOptions<PosDbContext> options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
         }

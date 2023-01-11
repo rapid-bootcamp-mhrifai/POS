@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace POS.Web.Migrations
+namespace POS.Repository.Migrations
 {
-    public partial class AddTableToDatabase : Migration
+    public partial class AddTableToDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

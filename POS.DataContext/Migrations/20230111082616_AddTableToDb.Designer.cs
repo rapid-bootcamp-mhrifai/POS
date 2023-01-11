@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using POS.Web.DataContext;
+using POS.Repository;
 
 #nullable disable
 
-namespace POS.Web.Migrations
+namespace POS.Repository.Migrations
 {
-    [DbContext(typeof(PosDbContext))]
-    [Migration("20230111054851_AddTableToDatabase")]
-    partial class AddTableToDatabase
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20230111082616_AddTableToDb")]
+    partial class AddTableToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
