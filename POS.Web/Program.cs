@@ -1,4 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using POS.Web.DataContext;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("SQLConnection");
+builder.Services.AddDbContext<PosDbContext>(options =>
+{
+    options.UseSqlServer(connectionString);
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

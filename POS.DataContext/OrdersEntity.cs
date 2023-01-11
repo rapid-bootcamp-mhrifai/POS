@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace POS.Repository
 {
     [Table("tbl_order")]
-    public class Order
+    public class OrdersEntity
     {
         [Key]
         [Column("id")]
@@ -18,8 +18,12 @@ namespace POS.Repository
         [Column("customer_id")]
         public int CustomerId { get; set; }
 
+        public CustomersEntity Customers { get; set; }
+
         [Column("employee_id")]
         public int EmployeeId { get; set; }
+
+        public EmployeesEntity Employees { get; set; }
 
         [Column("order_date")]
         public DateTime OrderDate { get; set; }
@@ -53,6 +57,8 @@ namespace POS.Repository
 
         [Column("ship_country")]
         public string ShipCountry { get; set; }
+
+        public ICollection<OrderDetailsEntity> orderDetailsEntities { get; set; }
 
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace POS.Repository
 {
     [Table("tbl_category")]
-    public class Category
+    public class CategoryEntity
     {
         [Key]
         [Column("id")]
@@ -18,6 +18,8 @@ namespace POS.Repository
         public string CategoryName { get; set; }
         [Column("description")]
         public string Description { get; set; }
+
+        public ICollection<ProductEntity> productEntities { get; set; }
 
     }
 }

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS.Web", "POS.Web\POS.Web.csproj", "{E6612B8B-2C46-4C12-AA29-6D514C21675A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POS.Web", "POS.Web\POS.Web.csproj", "{E6612B8B-2C46-4C12-AA29-6D514C21675A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS.Repository", "POS.DataContext\POS.Repository.csproj", "{62F8B8E9-88B3-487F-B6A1-26FFCF4C2662}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POS.Repository", "POS.DataContext\POS.Repository.csproj", "{62F8B8E9-88B3-487F-B6A1-26FFCF4C2662}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS.Service", "POS.Service\POS.Service.csproj", "{BCE2D752-E29F-4A50-B62C-74B378B5060E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POS.Service", "POS.Service\POS.Service.csproj", "{BCE2D752-E29F-4A50-B62C-74B378B5060E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

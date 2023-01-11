@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace POS.Repository
 {
     [Table("tbl_customers")]
-    public class Customers
+    public class CustomersEntity
     {
         [Key]
         [Column("id")]
@@ -44,5 +44,7 @@ namespace POS.Repository
 
         [Column("fax")]
         public string Fax { get; set; }
+
+        public ICollection<OrdersEntity> ordersEntities { get; set; }
     }
 }
