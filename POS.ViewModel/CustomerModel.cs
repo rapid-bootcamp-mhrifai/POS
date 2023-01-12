@@ -2,7 +2,7 @@
 
 namespace POS.ViewModel
 {
-    public class SupplierModel
+    public class CustomerModel
     {
         public int Id { get; set; }
 
@@ -35,8 +35,5 @@ namespace POS.ViewModel
 
         [Required]
         public string Fax { get; set; }
-
-        [Required]
-        public string HomePage { get; set; }
     }
 }

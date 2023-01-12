@@ -43,9 +43,10 @@ namespace POS.Service
         {
             var customers = View(id);
 
-            _context.customersEntities.Remove(customers);
+            _context.customersEntities.Remove(customers); 
             _context.SaveChanges();
         }
+
 
     }
 }

@@ -14,6 +14,7 @@ namespace POS.Web.Controllers
             _service = new SupplierService(context);
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             var Data = _service.Get();
@@ -25,6 +26,7 @@ namespace POS.Web.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Save([Bind("CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax, HomePage")] SupplierModel request)
         {
@@ -51,13 +53,12 @@ namespace POS.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Update([Bind("Id, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax, HomePage")] SupplierModel supplier)
         {
             if (ModelState.IsValid)
             {
-                SupplierEntity supplierEntity = new SupplierEntity(supplier);
-                supplierEntity.Id = supplier.Id;
-                _service.Update(supplierEntity);
+                _service.Update(supplier);
                 return Redirect("Index");
             }
             return View("Edit", supplier);

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using POS.Repository;
 using POS.Service;
+using POS.ViewModel;
 
 namespace POS.Web.Controllers
 {
@@ -27,10 +28,14 @@ namespace POS.Web.Controllers
 
         [HttpPost]
         public IActionResult Save(
-            [Bind("ProductName, Supplier, Category, QuantityPerUnit, UnitPrice, UnitInStock, UnitOnOrder, ReorderLevel, Discontinued")] ProductEntity request)
+            [Bind("ProductName, Supplier, Category, QuantityPerUnit, UnitPrice, UnitInStock, UnitOnOrder, ReorderLevel, Discontinued")] ProductModel request)
         {
-            _service.Add(request);
-            return Redirect("Index");
+            if (ModelState.IsValid)
+            {
+                _service.Add(new ProductEntity(request));
+                return Redirect("Index");
+            }
+            return View("Add", request);
         }
 
         [HttpGet]

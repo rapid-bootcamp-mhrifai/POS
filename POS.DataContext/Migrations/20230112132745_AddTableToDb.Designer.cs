@@ -12,7 +12,7 @@ using POS.Repository;
 namespace POS.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230111082616_AddTableToDb")]
+    [Migration("20230112132745_AddTableToDb")]
     partial class AddTableToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -321,10 +321,12 @@ namespace POS.Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("category_id");
 
-                    b.Property<bool>("Discontinued")
-                        .HasColumnType("bit")
+                    b.Property<string>("Discontinued")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("discontinued");
 
                     b.Property<string>("ProductName")
@@ -341,7 +343,8 @@ namespace POS.Repository.Migrations
                         .HasColumnName("reorder_level");
 
                     b.Property<int>("SupplierId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("supplier_id");
 
                     b.Property<long>("UnitInStock")
                         .HasColumnType("bigint")

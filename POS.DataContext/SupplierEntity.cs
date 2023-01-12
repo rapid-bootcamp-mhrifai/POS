@@ -60,7 +60,6 @@ namespace POS.Repository
         public string HomePage { get; set; }
 
         public ICollection<ProductEntity> productEntities { get; set; }
-
         public SupplierEntity()
         {
 

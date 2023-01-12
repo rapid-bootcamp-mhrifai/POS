@@ -46,5 +46,24 @@ namespace POS.Repository
         public string Fax { get; set; }
 
         public ICollection<OrdersEntity> ordersEntities { get; set; }
+
+        public CustomersEntity()
+        {
+
+        }
+
+        public CustomersEntity(POS.ViewModel.CustomerModel model)
+        {
+            CompanyName= model.CompanyName;
+            ContactName= model.ContactName;
+            ContactTitle= model.ContactTitle;
+            Address= model.Address;
+            City= model.City;
+            Region= model.Region;
+            PostalCode= model.PostalCode;
+            Country= model.Country;
+            Phone= model.Phone;
+            Fax= model.Fax;
+        }
     }
 }

@@ -43,8 +43,10 @@ namespace POS.Service
         {
             var product = View(id);
 
-            _context.productEntities.Remove(product);
+            _context.productEntities.Remove(product); 
             _context.SaveChanges();
         }
+
+
     }
 }

@@ -1,4 +1,4 @@
-﻿@model POS.Repository.CustomersEntity
+﻿@model POS.ViewModel.CustomerModel
 
 @{
     ViewData["Title"] = "Customer Edit";
@@ -49,13 +49,12 @@
     </div>
     <div class="pt-2 pb-2">
         <button type="submit" class="btn btn-sm btn-primary">Update</button>
-        <button asp-action="Index" class="btn btn-sm btn-success">Back</button>
     </div>
-
+    
 </form>
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    }
+}

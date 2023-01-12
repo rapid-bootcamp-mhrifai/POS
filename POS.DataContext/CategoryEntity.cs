@@ -24,17 +24,15 @@ namespace POS.Repository
         public string Description { get; set; }
 
         public ICollection<ProductEntity> productEntities { get; set; }
-
-        public CategoryEntity()
-        {
-
-        }
-
         public CategoryEntity(POS.ViewModel.CategoryModel model)
         {
             CategoryName = model.CategoryName;
             Description = model.Description;
         }
 
+        public CategoryEntity()
+        {
+
+        }
     }
 }
