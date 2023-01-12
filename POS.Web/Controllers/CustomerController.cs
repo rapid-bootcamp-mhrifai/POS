@@ -55,16 +55,20 @@ namespace POS.Web.Controllers
         [HttpPost]
         public IActionResult Update([Bind("Id, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax")] CustomerModel customer)
         {
-            if (ModelState.IsValid)
+            /*if (ModelState.IsValid)
             {
                 CustomersEntity entity = new CustomersEntity(customer);
                 entity.Id = customer.Id;
                 _service.Update(entity);
                 return Redirect("Index");
             }
+            return View("Edit", customer);*/
+            if (ModelState.IsValid)
+            {
+                _service.Update(customer);
+                return Redirect("Index");
+            }
             return View("Edit", customer);
-            /*_service.Update(customer);
-            return Redirect("Index");*/
         }
 
         [HttpGet]

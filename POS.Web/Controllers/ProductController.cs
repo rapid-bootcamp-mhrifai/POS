@@ -53,10 +53,14 @@ namespace POS.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update([Bind("Id, ProductName, Supplier, Category, QuantityPerUnit, UnitPrice, UnitInStock, UnitOnOrder, ReorderLevel, Discontinued")] ProductEntity product)
+        public IActionResult Update([Bind("Id, ProductName, Supplier, Category, QuantityPerUnit, UnitPrice, UnitInStock, UnitOnOrder, ReorderLevel, Discontinued")] ProductModel product)
         {
-            _service.Update(product);
-            return Redirect("Index");
+            if (ModelState.IsValid)
+            {
+                _service.Update(product);
+                return Redirect("Index");
+            }
+            return View("Edit", product);
         }
 
         [HttpGet]
