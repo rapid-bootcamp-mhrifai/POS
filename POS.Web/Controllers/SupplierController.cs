@@ -30,7 +30,7 @@ namespace POS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.Add(request);
+                _service.Add(new SupplierEntity(request));
                 return Redirect("Index");
             }
             return View("Add", request);
@@ -57,7 +57,7 @@ namespace POS.Web.Controllers
             {
                 SupplierEntity supplierEntity = new SupplierEntity(supplier);
                 supplierEntity.Id = supplier.Id;
-                supplier = _service.Update(supplierEntity);
+                _service.Update(supplierEntity);
                 return Redirect("Index");
             }
             return View("Edit", supplier);
