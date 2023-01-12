@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\POS.DataContext\POS.Repository.csproj" />
     <ProjectReference Include="..\POS.Service\POS.Service.csproj" />
+    <ProjectReference Include="..\POS.ViewModel\POS.ViewModel.csproj" />
   </ItemGroup>
 
 </Project>
