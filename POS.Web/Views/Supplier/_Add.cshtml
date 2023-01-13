@@ -1,11 +1,5 @@
 ﻿@model POS.ViewModel.SupplierModel
 
-@{
-    ViewData["Title"] = "New Supplier";
-}
-
-<h2>Add New Supplier</h2>
-
 <form asp-controller="Supplier" asp-action="Save" method="post">
     <div class="form-group">
         <label asp-for="CompanyName">CompanyName</label>
@@ -62,7 +56,9 @@
         <input asp-for="HomePage" class="form-control" />
         <span asp-validation-for="HomePage" class="text-danger" />
     </div>
-    <div class="pt-2 pb-2">
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>

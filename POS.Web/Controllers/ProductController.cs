@@ -26,6 +26,12 @@ namespace POS.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult AddModal()
+        {
+            return PartialView("_Add");
+        }
+
         [HttpPost]
         public IActionResult Save(
             [Bind("ProductName, Supplier, Category, QuantityPerUnit, UnitPrice, UnitInStock, UnitOnOrder, ReorderLevel, Discontinued")] ProductModel request)
