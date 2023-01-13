@@ -25,6 +25,11 @@ namespace POS.Web.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult AddModal()
+        {
+            return PartialView("_Add");
+        }
 
         [HttpPost]
         public IActionResult Save(
