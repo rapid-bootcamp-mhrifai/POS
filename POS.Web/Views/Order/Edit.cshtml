@@ -1,0 +1,98 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model POS.ViewModel.OrderModel
+
+@{
+    ViewData["Title"] = "Order Edit";
+}
+
+<h2>Edit Order</h2>
+<form asp-controller="Order" asp-action="Update" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="CustomersId">Supplier</label>
+        <select asp-for="CustomersId" class="form-control">
+            <option>Pilih Customer</option>
+            <option value="1">Customer 1</option>
+            <option value="2">Customer 2</option>
+        </select>
+        <span asp-validation-for="CustomersId" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EmployeesId">Category</label>
+        <select asp-for="EmployeesId" class="form-control">
+            <option>Pilih Employee</option>
+            <option value="1">Employee 1</option>
+            <option value="2">Employee 2</option>
+            <option value="3">Employee 3</option>
+        </select>
+        <span asp-validation-for="EmployeesId" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OrderDate">Order Date</label>
+        <input asp-for="OrderDate" class="form-control" />
+        <span asp-validation-for="OrderDate" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="RequiredDate">Required Date</label>
+        <input asp-for="RequiredDate" class="form-control" />
+        <span asp-validation-for="RequiredDate" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShippedDate">Shipped Date</label>
+        <input asp-for="ShippedDate" class="form-control" />
+        <span asp-validation-for="ShippedDate" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShipVia">Ship Via</label>
+        <input asp-for="ShipVia" class="form-control" />
+        <span asp-validation-for="ShipVia" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Freight">Freight</label>
+        <input asp-for="Freight" class="form-control" />
+        <span asp-validation-for="Freight" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShipName">Ship Name</label>
+        <input asp-for="ShipName" class="form-control" />
+        <span asp-validation-for="ShipName" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShipAddress">Ship Address</label>
+        <textarea asp-for="ShipAddress" class="form-control"></textarea>
+        <span asp-validation-for="ShipAddress" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShipCity">Ship City</label>
+        <input asp-for="ShipCity" class="form-control" />
+        <span asp-validation-for="ShipCity" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShipRegion">Ship Region</label>
+        <input asp-for="ShipRegion" class="form-control" />
+        <span asp-validation-for="ShipRegion" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShipPostalCode">Ship Postal Code</label>
+        <input asp-for="ShipPostalCode" class="form-control" />
+        <span asp-validation-for="ShipPostalCode" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShipCountry">Ship Country</label>
+        <input asp-for="ShipCountry" class="form-control" />
+        <span asp-validation-for="ShipCountry" class="text-danger" />
+    </div>
+    <div class="pt-2 pb-2">
+        <button type="submit" class="btn btn-sm btn-primary">Update</button>
+    </div>
+    
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -43,7 +43,7 @@ namespace POS.Repository
         public string Region { get; set; }
 
         [Column("postal_code")]
-        public int PostalCode { get; set; }
+        public string PostalCode { get; set; }
 
         [Column("country")]
         public string Country { get; set; }
@@ -64,5 +64,29 @@ namespace POS.Repository
         public string PhotoPath { get; set; }
 
         public ICollection<OrdersEntity> ordersEntities { get; set; }
+        public EmployeesEntity(POS.ViewModel.EmployeeModel model)
+        {
+            LastName = model.LastName;
+            FirstName = model.FirstName;
+            Title = model.Title;
+            TitleOfCourtesy = model.TitleOfCourtesy;
+            BirthDate = model.BirthDate;
+            HireDate = model.HireDate;
+            Address = model.Address;
+            City = model.City;
+            Region = model.Region;
+            PostalCode = model.PostalCode;
+            Country = model.Country;
+            HomePhone = model.HomePhone;
+            Extension = model.Extension;
+            Notes = model.Notes;
+            ReportsTo = model.ReportsTo;
+            PhotoPath = model.PhotoPath;
+
+        }
+        public EmployeesEntity()
+        {
+
+        }
     }
 }

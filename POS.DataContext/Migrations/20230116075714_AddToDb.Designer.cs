@@ -12,7 +12,7 @@ using POS.Repository;
 namespace POS.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230116040835_AddToDb")]
+    [Migration("20230116075714_AddToDb")]
     partial class AddToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,8 +173,9 @@ namespace POS.Repository.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("photo_path");
 
-                    b.Property<int>("PostalCode")
-                        .HasColumnType("int")
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("postal_code");
 
                     b.Property<string>("Region")
@@ -215,17 +216,19 @@ namespace POS.Repository.Migrations
                         .HasColumnName("discount");
 
                     b.Property<int>("OrdersId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("order_id");
 
                     b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("product_id");
 
                     b.Property<long>("Quantity")
                         .HasColumnType("bigint")
                         .HasColumnName("quantity");
 
-                    b.Property<int>("UnitPrice")
-                        .HasColumnType("int")
+                    b.Property<double>("UnitPrice")
+                        .HasColumnType("float")
                         .HasColumnName("unit_price");
 
                     b.HasKey("Id");
@@ -247,10 +250,12 @@ namespace POS.Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CustomersId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("customer_id");
 
                     b.Property<int>("EmployeesId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("employee_id");
 
                     b.Property<int>("Freight")
                         .HasColumnType("int")

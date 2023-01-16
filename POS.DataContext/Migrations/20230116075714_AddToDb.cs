@@ -60,7 +60,7 @@ namespace POS.Repository.Migrations
                     address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     city = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     region = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    postal_code = table.Column<int>(type: "int", nullable: false),
+                    postal_code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     country = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     home_phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     extension = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -102,8 +102,8 @@ namespace POS.Repository.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomersId = table.Column<int>(type: "int", nullable: false),
-                    EmployeesId = table.Column<int>(type: "int", nullable: false),
+                    customer_id = table.Column<int>(type: "int", nullable: false),
+                    employee_id = table.Column<int>(type: "int", nullable: false),
                     order_date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     required_date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     shipped_date = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -120,14 +120,14 @@ namespace POS.Repository.Migrations
                 {
                     table.PrimaryKey("PK_tbl_order", x => x.id);
                     table.ForeignKey(
-                        name: "FK_tbl_order_tbl_customers_CustomersId",
-                        column: x => x.CustomersId,
+                        name: "FK_tbl_order_tbl_customers_customer_id",
+                        column: x => x.customer_id,
                         principalTable: "tbl_customers",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_tbl_order_tbl_employees_EmployeesId",
-                        column: x => x.EmployeesId,
+                        name: "FK_tbl_order_tbl_employees_employee_id",
+                        column: x => x.employee_id,
                         principalTable: "tbl_employees",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -172,9 +172,9 @@ namespace POS.Repository.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OrdersId = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    unit_price = table.Column<int>(type: "int", nullable: false),
+                    order_id = table.Column<int>(type: "int", nullable: false),
+                    product_id = table.Column<int>(type: "int", nullable: false),
+                    unit_price = table.Column<double>(type: "float", nullable: false),
                     quantity = table.Column<long>(type: "bigint", nullable: false),
                     discount = table.Column<double>(type: "float", nullable: false)
                 },
@@ -182,38 +182,38 @@ namespace POS.Repository.Migrations
                 {
                     table.PrimaryKey("PK_tbl_order_details", x => x.id);
                     table.ForeignKey(
-                        name: "FK_tbl_order_details_tbl_order_OrdersId",
-                        column: x => x.OrdersId,
+                        name: "FK_tbl_order_details_tbl_order_order_id",
+                        column: x => x.order_id,
                         principalTable: "tbl_order",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_tbl_order_details_tbl_product_ProductId",
-                        column: x => x.ProductId,
+                        name: "FK_tbl_order_details_tbl_product_product_id",
+                        column: x => x.product_id,
                         principalTable: "tbl_product",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_order_CustomersId",
+                name: "IX_tbl_order_customer_id",
                 table: "tbl_order",
-                column: "CustomersId");
+                column: "customer_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_order_EmployeesId",
+                name: "IX_tbl_order_employee_id",
                 table: "tbl_order",
-                column: "EmployeesId");
+                column: "employee_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_order_details_OrdersId",
+                name: "IX_tbl_order_details_order_id",
                 table: "tbl_order_details",
-                column: "OrdersId");
+                column: "order_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_order_details_ProductId",
+                name: "IX_tbl_order_details_product_id",
                 table: "tbl_order_details",
-                column: "ProductId");
+                column: "product_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_product_category_id",

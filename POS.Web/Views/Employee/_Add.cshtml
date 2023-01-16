@@ -1,0 +1,95 @@
+﻿@model POS.ViewModel.EmployeeModel
+
+
+<form asp-controller="Employee" asp-action="Save" method="post">
+    <div class="form-group">
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Title"> Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="TitleOfCourtesy"> Title Of Courtesy</label>
+        <input asp-for="TitleOfCourtesy" class="form-control" />
+        <span asp-validation-for="TitleOfCourtesy" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BirthDate"> Birth Date</label>
+        <input asp-for="BirthDate" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="HireDate"> Hire Date</label>
+        <input asp-for="HireDate" class="form-control" />
+        <span asp-validation-for="HireDate" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Address">Address</label>
+        <textarea asp-for="Address" class="form-control"></textarea>
+        <span asp-validation-for="Address" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="City">City</label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Region">Region</label>
+        <input asp-for="Region" class="form-control" />
+        <span asp-validation-for="Region" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PostalCode">Postal Code</label>
+        <input asp-for="PostalCode" class="form-control" />
+        <span asp-validation-for="PostalCode" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Country">Country</label>
+        <input asp-for="Country" class="form-control" />
+        <span asp-validation-for="Country" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="HomePhone">Home Phone</label>
+        <input asp-for="HomePhone" class="form-control" />
+        <span asp-validation-for="HomePhone" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Extension">Extension</label>
+        <input asp-for="Extension" class="form-control" />
+        <span asp-validation-for="Extension" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Notes">Notes</label>
+        <input asp-for="Notes" class="form-control" />
+        <span asp-validation-for="Notes" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ReportsTo">Reports To</label>
+        <input asp-for="ReportsTo" class="form-control" />
+        <span asp-validation-for="ReportsTo" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PhotoPath">Photo Path</label>
+        <input asp-for="PhotoPath" class="form-control" />
+        <span asp-validation-for="PhotoPath" class="text-danger" />
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
