@@ -12,8 +12,8 @@ using POS.Repository;
 namespace POS.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230112132745_AddTableToDb")]
-    partial class AddTableToDb
+    [Migration("20230116031022_AddToDb")]
+    partial class AddToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -324,9 +324,8 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("category_id");
 
-                    b.Property<string>("Discontinued")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                    b.Property<bool>("Discontinued")
+                        .HasColumnType("bit")
                         .HasColumnName("discontinued");
 
                     b.Property<string>("ProductName")

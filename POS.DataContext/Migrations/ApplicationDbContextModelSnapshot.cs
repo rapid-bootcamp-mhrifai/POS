@@ -322,9 +322,8 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("category_id");
 
-                    b.Property<string>("Discontinued")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                    b.Property<bool>("Discontinued")
+                        .HasColumnType("bit")
                         .HasColumnName("discontinued");
 
                     b.Property<string>("ProductName")

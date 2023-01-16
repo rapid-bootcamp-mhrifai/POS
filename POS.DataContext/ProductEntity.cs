@@ -52,7 +52,7 @@ namespace POS.Repository
 
         [Required]
         [Column("discontinued")]
-        public string Discontinued { get; set; }
+        public bool Discontinued { get; set; }
 
         public ICollection<OrderDetailsEntity> orderDetailsEntities { get; set; }
 

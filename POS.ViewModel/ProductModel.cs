@@ -31,6 +31,6 @@ namespace POS.ViewModel
         public long ReorderLevel { get; set; }
 
         [Required]
-        public string Discontinued { get; set; }
+        public bool Discontinued { get; set; }
     }
 }
