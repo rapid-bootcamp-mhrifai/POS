@@ -32,7 +32,7 @@ namespace POS.Repository
 
         [Required]
         [Column("quantity_per_unit")]
-        public long QuantityPerUnit { get; set; }
+        public String Quantity { get; set; }
 
         [Required]
         [Column("unit_price")]
@@ -61,6 +61,7 @@ namespace POS.Repository
             ProductName= model.ProductName;
             SupplierId= model.SupplierId;
             CategoryId= model.CategoryId;
+            Quantity = model.Quantity;
             UnitPrice = model.UnitPrice;
             UnitInStock= model.UnitInStock;
             UnitOnOrder= model.UnitOnOrder;

@@ -4,8 +4,8 @@
     ViewData["Title"] = "Product Edit";
 }
 
-<h2>Edit Customer</h2>
-<form asp-controller="Customer" asp-action="Update" method="post">
+<h2>Edit Product</h2>
+<form asp-controller="Product" asp-action="Update" method="post">
     <input type="hidden" asp-for="Id" />
     <div class="form-group">
         <label asp-for="ProductName">Product Name</label>
@@ -20,8 +20,8 @@
         <input asp-for="CategoryId" class="form-control" />
     </div>
     <div class="form-group">
-        <label asp-for="QuantityPerUnit">Quantity Per Unit</label>
-        <input asp-for="QuantityPerUnit" class="form-control" />
+        <label asp-for="Quantity">Quantity Per Unit</label>
+        <input asp-for="Quantity" class="form-control" />
     </div>
     <div class="form-group">
         <label asp-for="UnitPrice">Unit Price</label>

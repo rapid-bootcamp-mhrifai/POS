@@ -331,8 +331,9 @@ namespace POS.Repository.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("product_name");
 
-                    b.Property<long>("QuantityPerUnit")
-                        .HasColumnType("bigint")
+                    b.Property<string>("Quantity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("quantity_per_unit");
 
                     b.Property<long>("ReorderLevel")

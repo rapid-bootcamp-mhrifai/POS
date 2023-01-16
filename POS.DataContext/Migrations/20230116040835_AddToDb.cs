@@ -142,7 +142,7 @@ namespace POS.Repository.Migrations
                     product_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     supplier_id = table.Column<int>(type: "int", nullable: false),
                     category_id = table.Column<int>(type: "int", nullable: false),
-                    quantity_per_unit = table.Column<long>(type: "bigint", nullable: false),
+                    quantity_per_unit = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     unit_price = table.Column<double>(type: "float", nullable: false),
                     unit_in_stock = table.Column<long>(type: "bigint", nullable: false),
                     unit_on_order = table.Column<long>(type: "bigint", nullable: false),

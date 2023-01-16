@@ -19,7 +19,7 @@ namespace POS.Service
             product.ProductName = productEntity.ProductName;
             product.SupplierId = productEntity.SupplierId;
             product.CategoryId = productEntity.CategoryId;
-            product.QuantityPerUnit = productEntity.QuantityPerUnit;
+            product.Quantity = productEntity.Quantity;
             product.UnitPrice = productEntity.UnitPrice;
             product.UnitInStock = productEntity.UnitInStock;
             product.UnitOnOrder = productEntity.UnitOnOrder;
@@ -33,7 +33,7 @@ namespace POS.Service
             entity.ProductName = model.ProductName;
             entity.SupplierId = model.SupplierId;
             entity.CategoryId = model.CategoryId;
-            entity.QuantityPerUnit = model.QuantityPerUnit;
+            entity.Quantity = model.Quantity;
             entity.UnitPrice = model.UnitPrice;
             entity.UnitInStock = model.UnitInStock;
             entity.UnitOnOrder = model.UnitOnOrder;

@@ -12,7 +12,7 @@ using POS.Repository;
 namespace POS.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230116031022_AddToDb")]
+    [Migration("20230116040835_AddToDb")]
     partial class AddToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -333,8 +333,9 @@ namespace POS.Repository.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("product_name");
 
-                    b.Property<long>("QuantityPerUnit")
-                        .HasColumnType("bigint")
+                    b.Property<string>("Quantity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("quantity_per_unit");
 
                     b.Property<long>("ReorderLevel")
