@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace POS.Repository.Migrations
 {
-    public partial class AddTableToDb : Migration
+    public partial class AddToDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -163,7 +163,7 @@ namespace POS.Repository.Migrations
                     product_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     supplier_id = table.Column<int>(type: "int", nullable: false),
                     category_id = table.Column<int>(type: "int", nullable: false),
-                    quantity_per_unit = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    quantity_per_unit = table.Column<int>(type: "int", nullable: false),
                     unit_price = table.Column<double>(type: "float", nullable: false),
                     unit_in_stock = table.Column<long>(type: "bigint", nullable: false),
                     unit_on_order = table.Column<long>(type: "bigint", nullable: false),
@@ -196,7 +196,7 @@ namespace POS.Repository.Migrations
                     order_id = table.Column<int>(type: "int", nullable: false),
                     product_id = table.Column<int>(type: "int", nullable: false),
                     unit_price = table.Column<double>(type: "float", nullable: false),
-                    quantity = table.Column<long>(type: "bigint", nullable: false),
+                    quantity = table.Column<int>(type: "int", nullable: false),
                     discount = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>

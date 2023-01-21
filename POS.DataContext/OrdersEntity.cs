@@ -18,24 +18,19 @@ namespace POS.Repository
         [Column("customer_id")]
         public int CustomersId { get; set; }
 
-        [Required]
         public CustomersEntity Customers { get; set; }
 
         [Column("employee_id")]
         public int EmployeesId { get; set; }
 
-        [Required]
         public EmployeesEntity Employees { get; set; }
 
-        [Required]
         [Column("order_date")]
         public DateTime OrderDate { get; set; }
 
-        [Required]
         [Column("required_date")]
         public DateTime RequiredDate { get; set; }
 
-        [Required]
         [Column("shipped_date")]
         public DateTime ShippedDate { get; set; }
 
@@ -44,35 +39,27 @@ namespace POS.Repository
 
         public ShipperEntity Shipper { get; set; }
 
-        [Required]
         [Column("ship_via")]
         public int ShipVia { get; set; }
 
-        [Required]
         [Column("freight")]
         public int Freight { get; set; }
 
-        [Required]
         [Column("ship_name")]
         public string ShipName { get; set; }
 
-        [Required]
         [Column("ship_address")]
         public string ShipAddress { get; set; }
 
-        [Required]
         [Column("ship_city")]
         public string ShipCity { get; set; }
 
-        [Required]
         [Column("ship_region")]
         public string ShipRegion { get; set; }
 
-        [Required]
         [Column("ship_postal_code")]
         public string ShipPostalCode { get; set; }
 
-        [Required]
         [Column("ship_country")]
         public string ShipCountry { get; set; }
 

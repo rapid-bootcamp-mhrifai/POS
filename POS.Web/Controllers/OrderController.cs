@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using POS.Repository;
 using POS.Service;
 using POS.ViewModel;
@@ -8,9 +9,19 @@ namespace POS.Web.Controllers
     public class OrderController : Controller
     {
         private readonly OrderService _service;
+
+        private readonly CustomerService _customerService;
+        private readonly EmployeeService _employeeService;
+        private readonly ShipperService _shipperService;
+        private readonly ProductService _productService;
+
         public OrderController(ApplicationDbContext context)
         {
             _service = new OrderService(context);
+            _customerService= new CustomerService(context);
+            _employeeService= new EmployeeService(context);
+            _shipperService= new ShipperService(context);
+            _productService= new ProductService(context);
         }
 
         [HttpGet]
@@ -23,18 +34,23 @@ namespace POS.Web.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Customer = new SelectList(_customerService.Get(), "Id", "CustomerName");
+            ViewBag.Employee = new SelectList(_employeeService.Get(), "Id", "LastName");
+            ViewBag.Shipper = new SelectList(_shipperService.Get(), "Id", "CompanyName");
+            ViewBag.Product = new SelectList(_productService.Get(), "Id", "ProductName");
             return View();
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public IActionResult AddModal()
         {
+            //ViewBag.Customer = new SelectList(_customerService.Get(), "Id", "CompanyName");
             return PartialView("_Add");
-        }
+        }*/
 
         [HttpPost]
         public IActionResult Save(
-            [Bind("CustomersId, EmployeesId, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry")] OrderModel request)
+            [Bind("CustomersId, EmployeesId, OrderDate, RequiredDate, ShippedDate, ShipperId, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry, OrderDetailModels")] OrderModel request)
         {
             if (ModelState.IsValid)
             {
@@ -45,21 +61,27 @@ namespace POS.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int? id)
+        public IActionResult Detail(int? id)
         {
-            var order = _service.View(id);
+            var order = _service.ViewDetail(id);
             return View(order);
         }
 
         [HttpGet]
         public IActionResult Edit(int? id)
         {
+            ViewBag.Customer = new SelectList(_customerService.Get(), "Id", "CustomerName");
+            ViewBag.Employee = new SelectList(_employeeService.Get(), "Id", "LastName");
+            ViewBag.Shipper = new SelectList(_shipperService.Get(), "Id", "CompanyName");
+            ViewBag.Product = new SelectList(_productService.Get(), "Id", "ProductName");
             var order = _service.View(id);
+
             return View(order);
+
         }
 
         [HttpPost]
-        public IActionResult Update([Bind("Id, CustomersId, EmployeesId, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry")] OrderModel order)
+        public IActionResult Update([Bind("Id, CustomersId, EmployeesId, OrderDate, RequiredDate, ShippedDate, ShipperId, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry, OrderDetailModels")] OrderModel order)
         {
             if (ModelState.IsValid)
             {

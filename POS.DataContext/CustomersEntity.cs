@@ -17,7 +17,7 @@ namespace POS.Repository
 
         [Required]
         [Column("company_name")]
-        public string CompanyName { get; set; }
+        public string CustomerName { get; set; }
 
         [Required]
         [Column("contact_name")]
@@ -64,7 +64,7 @@ namespace POS.Repository
 
         public CustomersEntity(POS.ViewModel.CustomerModel model)
         {
-            CompanyName= model.CompanyName;
+            CustomerName= model.CustomerName;
             ContactName= model.ContactName;
             ContactTitle= model.ContactTitle;
             Address= model.Address;

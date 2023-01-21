@@ -13,11 +13,17 @@
     </div>
     <div class="form-group">
         <label asp-for="SupplierId">SupplierId</label>
-        <input asp-for="SupplierId" class="form-control" />
+        <select type="text" asp-for="SupplierId" class="form-control" asp-items="@ViewBag.Supplier">
+            <option selected>Select Supplier</option>
+        </select>
+        <span asp-validation-for="SupplierId" class="text-danger" />
     </div>
     <div class="form-group">
         <label asp-for="CategoryId">CategoryId</label>
-        <input asp-for="CategoryId" class="form-control" />
+        <select type="text" asp-for="CategoryId" class="form-control" asp-items="@ViewBag.Category">
+            <option selected>Select Category</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger" />
     </div>
     <div class="form-group">
         <label asp-for="Quantity">Quantity Per Unit</label>

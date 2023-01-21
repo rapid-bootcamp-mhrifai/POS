@@ -1,30 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace POS.ViewModel
+namespace POS.ViewModel.DTO
 {
-    public class OrderDetailModel
+    public class OrderDetailDTO
     {
         public int Id { get; set; }
-
-        [Required]
-        public int OrdersId { get; set; }
-
-        [Required]
         public int ProductId { get; set; }
-
-        [Required]
+        public string ProductName { get; set; }
         public double UnitPrice { get; set; }
-
-        [Required]
         public int Quantity { get; set; }
-
-        [Required]
         public double Discount { get; set; }
+        public double Subtotal { get; set; }
     }
 }

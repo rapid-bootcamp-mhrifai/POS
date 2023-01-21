@@ -16,7 +16,7 @@ namespace POS.ViewModel
         public int CategoryId { get; set; }
 
         [Required]
-        public String Quantity { get; set; }
+        public int Quantity { get; set; }
 
         [Required]
         public double UnitPrice { get; set; }

@@ -12,8 +12,8 @@ using POS.Repository;
 namespace POS.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230121030335_AddTableToDb")]
-    partial class AddTableToDb
+    [Migration("20230121155903_AddToDb")]
+    partial class AddToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,11 +67,6 @@ namespace POS.Repository.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("city");
 
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("company_name");
-
                     b.Property<string>("ContactName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -86,6 +81,11 @@ namespace POS.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("country");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("company_name");
 
                     b.Property<string>("Fax")
                         .IsRequired()
@@ -223,8 +223,8 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("product_id");
 
-                    b.Property<long>("Quantity")
-                        .HasColumnType("bigint")
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int")
                         .HasColumnName("quantity");
 
                     b.Property<double>("UnitPrice")
@@ -344,9 +344,8 @@ namespace POS.Repository.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("product_name");
 
-                    b.Property<string>("Quantity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int")
                         .HasColumnName("quantity_per_unit");
 
                     b.Property<long>("ReorderLevel")

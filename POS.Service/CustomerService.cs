@@ -16,7 +16,7 @@ namespace POS.Service
         {
             CustomerModel result = new CustomerModel();
             result.Id = customersEntity.Id;
-            result.CompanyName = customersEntity.CompanyName;
+            result.CustomerName = customersEntity.CustomerName;
             result.ContactName = customersEntity.ContactName;
             result.ContactTitle = customersEntity.ContactTitle;
             result.Address = customersEntity.Address;
@@ -31,7 +31,7 @@ namespace POS.Service
 
         public void ModelToEntity(CustomerModel model, CustomersEntity entity)
         {
-            entity.CompanyName = model.CompanyName;
+            entity.CustomerName = model.CustomerName;
             entity.ContactName = model.ContactName;
             entity.ContactTitle = model.ContactTitle;
             entity.Address = model.Address;

@@ -1,5 +1,6 @@
 ﻿using POS.Repository;
 using POS.ViewModel;
+using POS.ViewModel.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,6 +97,63 @@ namespace POS.Service
             _context = context;
         }
 
+        private OrderWithDetailDTO GetOrderWithDetailDTO(OrdersEntity entity)
+        {
+            var customer = _context.customersEntities.Find(entity.CustomersId);
+            var shipper = _context.shipperEntities.Find(entity.ShipperId);
+
+            OrderWithDetailDTO orderWithDetail = new OrderWithDetailDTO();
+            orderWithDetail.Id = entity.Id;
+            orderWithDetail.CustomersId = customer.Id;
+            orderWithDetail.CustomerName = customer.CustomerName;
+            orderWithDetail.OrderDate = entity.OrderDate;
+            orderWithDetail.RequiredDate = entity.RequiredDate;
+            orderWithDetail.ShippedDate = entity.ShippedDate;
+            orderWithDetail.ShipperId = shipper.Id;
+            orderWithDetail.ShipperName = shipper.CompanyName;
+            orderWithDetail.ShipperPhone = shipper.Phone;
+            orderWithDetail.Freight = entity.Freight;
+            orderWithDetail.ShipName = entity.ShipName;
+            orderWithDetail.ShipAddress = entity.ShipAddress;
+            orderWithDetail.ShipCity = entity.ShipCity;
+            orderWithDetail.ShipRegion = entity.ShipRegion;
+            orderWithDetail.ShipPostalCode = entity.ShipPostalCode;
+            orderWithDetail.ShipCountry = entity.ShipCountry;
+            orderWithDetail.orderDetails = new List<OrderDetailDTO>();
+
+            foreach (var item in entity.orderDetailsEntities)
+            {
+                orderWithDetail.orderDetails.Add(GetOrderDetailDTO(item));
+            }
+            var subtotal = 0.0;
+            foreach (var item in orderWithDetail.orderDetails)
+            {
+                item.Subtotal = item.Quantity * item.UnitPrice * (1 - item.Discount / 100);
+                subtotal += item.Subtotal;
+            }
+            orderWithDetail.Subtotal = subtotal;
+            orderWithDetail.Tax = 0.1 * subtotal;
+            orderWithDetail.Shipping = 0;
+            orderWithDetail.Total = orderWithDetail.Subtotal + orderWithDetail.Tax + orderWithDetail.Shipping;
+
+            return orderWithDetail;
+        }
+
+        private OrderDetailDTO GetOrderDetailDTO(OrderDetailsEntity entity)
+        {
+            var model = new OrderDetailDTO();
+            var product = _context.productEntities.Find(entity.ProductId);
+
+            model.Id = entity.Id;
+            model.ProductId = product.Id;
+            model.ProductName = product.ProductName;
+            model.UnitPrice = entity.UnitPrice;
+            model.Quantity = entity.Quantity;
+            model.Discount = entity.Discount;
+
+            return model;
+        }
+
         public List<OrdersEntity> Get()
         {
             return _context.ordersEntities.ToList();
@@ -123,8 +181,21 @@ namespace POS.Service
         public OrderModel View(int? id)
         {
             var order = _context.ordersEntities.Find(id);
+            var detail = _context.orderDetailsEntities.Where(x => x.OrdersId == id);
+            foreach (var item in detail) { }
             return EntityToModel(order);
+
         }
+
+        public OrderWithDetailDTO ViewDetail(int? id)
+        {
+            var orderEntity = _context.ordersEntities.Find(id);
+            var detailEntity = _context.orderDetailsEntities.Where(x => x.OrdersId == id).ToList();
+            orderEntity.orderDetailsEntities = detailEntity;
+            var orderResponse = GetOrderWithDetailDTO(orderEntity);
+            return orderResponse;
+        }
+
 
         public void Update(OrderModel orders)
         {
@@ -183,9 +254,17 @@ namespace POS.Service
 
         public void Delete(int? id)
         {
-            var entity = _context.ordersEntities.Find(id);
-            _context.ordersEntities.Remove(entity);
+            var order = _context.ordersEntities.Find(id);
+            _context.ordersEntities.Remove(order);
+
+            var detail = _context.orderDetailsEntities.Where(_x => _x.Id == id);
+            foreach (var item in detail)
+            {
+                _context.orderDetailsEntities.Remove(item);
+            }
+
             _context.SaveChanges();
+
         }
     }
 }
