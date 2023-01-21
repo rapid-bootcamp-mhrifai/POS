@@ -38,7 +38,7 @@ namespace POS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.Add(new OrdersEntity(request));
+                _service.Add(request);
                 return Redirect("Index");
             }
             return View("Add", request);

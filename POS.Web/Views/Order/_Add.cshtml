@@ -6,7 +6,7 @@
 
 <form asp-controller="Order" asp-action="Save" method="post">
      <div class="form-group">
-        <label asp-for="CustomersId">Supplier</label>
+        <label asp-for="CustomersId">CustomerId</label>
         <select asp-for="CustomersId" class="form-control">
             <option>Pilih Customer</option>
             <option value="1">Customer 1</option>
@@ -15,7 +15,7 @@
         <span asp-validation-for="CustomersId" class="text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="EmployeesId">Category</label>
+        <label asp-for="EmployeesId">EmployeeId</label>
         <select asp-for="EmployeesId" class="form-control">
             <option>Pilih Employee</option>
             <option value="1">Employee 1</option>

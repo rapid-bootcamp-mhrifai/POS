@@ -1,24 +1,18 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model IEnumerable<POS.Repository.OrderDetailsEntity>
+﻿@model IEnumerable<POS.Repository.ShipperEntity>
 @{
-    ViewBag.Title = "OrderDetail";
+    ViewBag.Title = "Shipper";
     Layout = "_Layout";
 }
-<h2>OrderDetail</h2>
+<h2>Shipper</h2>
 <div class="pt-2 pb-2">
-    <a asp-action="Add" class="btn btn-primary" role="button" id="btn-add">Add Order Detail</a>
+    <a asp-action="Add" class="btn btn-primary" role="button" id="btn-add">Add Shipper</a>
 </div>
 <table class="table table-responsive">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Order</th>
-            <th>Product</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
-            <th>Discount</th>
+            <th>CompanyName</th>
+            <th>Phone</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -27,11 +21,8 @@
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.OrdersId</td>
-                <td>@item.ProductId</td>
-                <td>@item.UnitPrice</td>
-                <td>@item.Quantity</td>
-                <td>@item.Discount</td>
+                <td>@item.CompanyName</td>
+                <td>@item.Phone</td>                
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-success">View</a>
@@ -46,7 +37,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Order Detail</h5>
+                <h5 class="modal-title">Modal title</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -62,9 +53,8 @@
     <script type="text/javascript">
         $("#btn-add").on("click", function (e) {
             e.preventDefault();
-            //alert("Ah ... kamu kok sentuh aku");
             $.ajax({
-                url: "/OrderDetail/AddModal",
+                url: "/Shipper/AddModal",
                 type: "GET",
                 dataType: "html",
                 success: function (data) {
@@ -76,5 +66,3 @@
         });
     </script>
 }
-
-
