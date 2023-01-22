@@ -217,6 +217,7 @@ namespace POS.Service
             entityOrder.RequiredDate = updatedEntity.RequiredDate;
             entityOrder.ShippedDate = updatedEntity.ShippedDate;
             entityOrder.ShipperId = updatedEntity.ShipperId;
+            entityOrder.ShipVia = updatedEntity.ShipVia;
             entityOrder.Freight = updatedEntity.Freight;
             entityOrder.ShipName = updatedEntity.ShipName;
             entityOrder.ShipAddress = updatedEntity.ShipAddress;
