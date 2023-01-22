@@ -207,10 +207,9 @@ namespace POS.Service
             var entityOrder = _context.ordersEntities.Find(orders.Id);
             var orderDetailList = _context.orderDetailsEntities.Where(x => x.OrdersId == orders.Id).ToList();
 
-            // convert model with updated data into entity
             var updatedEntity = ModelToEntity(orders);
 
-            // copy all property
+            //copy all
             entityOrder.CustomersId = updatedEntity.CustomersId;
             entityOrder.EmployeesId = updatedEntity.EmployeesId;
             entityOrder.OrderDate = updatedEntity.OrderDate;
@@ -227,7 +226,6 @@ namespace POS.Service
             entityOrder.ShipCountry = updatedEntity.ShipCountry;
             entityOrder.orderDetailsEntities = updatedEntity.orderDetailsEntities;
 
-            // update order entity
             _context.ordersEntities.Update(entityOrder);
 
             foreach (var newItem in entityOrder.orderDetailsEntities)
@@ -242,13 +240,12 @@ namespace POS.Service
                         item.Quantity = newItem.Quantity;
                         item.Discount = newItem.Discount;
 
-                        // update order detail entity
                         _context.orderDetailsEntities.Update(item);
                     }
                 }
 
             }
-            // save updated order & order entity
+
             _context.SaveChanges();
 
         }
@@ -266,6 +263,14 @@ namespace POS.Service
 
             _context.SaveChanges();
 
+        }
+
+        public void DeleteOrderDetail(int? id)
+        {
+            var orderDetail = _context.orderDetailsEntities.Find(id);
+            _context.orderDetailsEntities.Remove(orderDetail);
+
+            _context.SaveChanges();
         }
     }
 }

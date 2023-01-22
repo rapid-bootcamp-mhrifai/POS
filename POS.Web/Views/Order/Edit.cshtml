@@ -110,7 +110,7 @@
                     <td><input asp-for="OrderDetailModels[i].UnitPrice" class="form-control" /></td>
                     <td><input asp-for="OrderDetailModels[i].Quantity" class="form-control" /></td>
                     <td><input asp-for="OrderDetailModels[i].Discount" class="form-control" /></td>
-                    <td class="text-center"><a class="btn btn-xs delete-detail" edu-data-id="1"><i class="la la-trash la-lg text-danger">-</i></a></td>
+                    <td>  <a asp-action="DeleteOrderDetail" asp-route-id="@Model.OrderDetailModels[i].Id" class="btn btn-sm btn-danger">Delete</a> </td>
                 </tr>
             }
         </tbody>

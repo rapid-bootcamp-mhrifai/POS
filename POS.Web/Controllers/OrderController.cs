@@ -97,5 +97,12 @@ namespace POS.Web.Controllers
             _service.Delete(id);
             return Redirect("/Order");
         }
+
+        [HttpGet]
+        public IActionResult DeleteOrderDetail(int? id)
+        {
+            _service.DeleteOrderDetail(id);
+            return Redirect("/Order");
+        }
     }
 }
